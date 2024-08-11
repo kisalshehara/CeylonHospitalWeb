@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ceylon Hospitals | Article </title>
+<!-- Stylesheets -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/meanmenu.min.css" rel="stylesheet">
+<link href="assets/css/responsive.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+<link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+	<link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<style>
+			.livechat-list {
+			text-align: justify;
+			padding: 0;
+		}
+
+		.animated-item {
+			position: relative;
+			background: linear-gradient(135deg, rgba(4, 119, 13, 0.6), rgba(20, 41, 0, 0.6));
+			color: white;
+			padding: 15px;
+			border-radius: 15px;
+			margin-bottom: 15px;
+			list-style: none;
+			overflow: hidden;
+			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		}
+
+		.animated-item::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.3);
+			z-index: -1;
+			border-radius: 15px;
+			animation: border-animation 3s infinite linear;
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		.animated-item:hover::before {
+			opacity: 0;
+		}
+
+		@keyframes border-animation {
+			0% {
+				transform: translateX(-100%);
+			}
+
+			50% {
+				transform: translateX(100%);
+			}
+
+			100% {
+				transform: translateX(-100%);
+			}
+		}
+
+		.animated-item i {
+			margin-right: 10px;
+			color: rgb(124, 124, 124);
+		}
+
+		.animated-item:hover {
+			transform: scale(1.05);
+		}
+
+		.livechat-list {
+			text-align: justify;
+			padding: 0;
+		}
+
+		.animated-item {
+			position: relative;
+			background: linear-gradient(135deg, rgba(4, 119, 14, 0.438), rgba(20, 41, 0, 0.6));
+			color: white;
+			padding: 15px;
+			border-radius: 15px;
+			margin-bottom: 15px;
+			list-style: none;
+			overflow: hidden;
+			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		}
+
+		.animated-item::before {
+			content: '';
+			position: absolute;
+			top: -5px;
+			left: -5px;
+			width: 10px;
+			height: 10px;
+			background-color: rgba(4, 119, 13, 0.8);
+			border-radius: 50%;
+			animation: move-dots 5s infinite linear;
+			z-index: -1;
+		}
+
+		@keyframes move-dots {
+
+			0%,
+			100% {
+				transform: translate(0, 0);
+			}
+
+			25% {
+				transform: translate(100%, 0);
+			}
+
+			50% {
+				transform: translate(100%, 100%);
+			}
+
+			75% {
+				transform: translate(0, 100%);
+			}
+		}
+
+		.animated-item i {
+			margin-right: 10px;
+			color: rgba(124, 124, 124, 0.493);
+		}
+
+		.animated-item:hover {
+			transform: scale(1.05);
+		}
+
+		.livechat_image-outer {
+			width: 100%;
+			/* Ensures the container spans the full width available */
+			max-width: 550px;
+			/* Limits maximum width to 550px */
+			height: auto;
+			/* Allows the height to adjust proportionally */
+			margin: 0 auto;
+			/* Centers the container horizontally */
+			overflow: hidden;
+			/* Ensures the video stays within its boundaries */
+			border-radius: 20px;
+			/* Adds rounded corners to the container */
+			box-shadow: 0 0 30px rgba(26, 124, 1, 0.493);
+			/* Optional: Adds a subtle shadow */
+		}
+
+		.livechat_image-outer video {
+			width: 100%;
+			/* Ensures the video fills its container */
+			height: 100%;
+			/* Ensures the video fills its container */
+			object-fit: cover;
+			/* Maintains aspect ratio and covers the entire container */
+			object-position: center;
+			/* Centers the video within the container */
+			border-radius: 20px;
+			/* Keeps the rounded corners inherited from the container */
+		}
+
+
+		.popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure popup is on the upper layer */
+		}
+
+		.popup-content {
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			width: 300px;
+			text-align: center;
+			position: relative;
+		}
+
+		.closePopup {
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			color: #333;
+		}
+
+		.closePopup:hover {
+			color: #ff0000;
+		}
+
+		#ongoingNumberDisplay {
+			margin-top: 20px;
+			font-size: 24px;
+			font-weight: bold;
+			font-family: 'Digital-7', monospace;
+			/* Example digital font */
+			color: #ff0000;
+		}
+
+		@keyframes blink {
+			0% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.blinking-cursor {
+			font-weight: bold;
+			font-size: 32px;
+			color: #ff0000;
+			animation: blink 1s step-end infinite;
+		}
+
+		select {
+			padding: 10px;
+			font-size: 16px;
+			margin-top: 10px;
+		}
+
+
+
+
+
+
+		.popup,
+		.report-popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure popup is on the upper layer */
+		}
+
+		.popup-content,
+		.report-popup-content {
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			width: 300px;
+			text-align: center;
+			position: relative;
+		}
+
+		.closePopup,
+		.closeReportPopup {
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			color: #333;
+		}
+
+		.closePopup:hover,
+		.closeReportPopup:hover {
+			color: #ff0000;
+		}
+
+		#ongoingNumberDisplay {
+			margin-top: 20px;
+			font-size: 24px;
+			font-family: 'Digital-7', monospace;
+			/* Example digital font */
+			color: #ff0000;
+		}
+
+		@keyframes blink {
+			0% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.blinking-cursor {
+			font-weight: bold;
+			font-size: 32px;
+			color: #ff0000;
+			animation: blink 1s step-end infinite;
+		}
+
+		select {
+			padding: 10px;
+			font-size: 16px;
+			margin-top: 10px;
+		}
+
+		.report-popup-content input[type="text"] {
+			width: 80%;
+			padding: 10px;
+			margin: 20px 0;
+			font-size: 16px;
+		}
+
+		.report-popup-content button {
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.loading {
+			display: none;
+			margin: 20px 0;
+			font-size: 16px;
+			color: #00aaff;
+		}
+
+		.download-button {
+			display: none;
+			margin-top: 20px;
+			padding: 10px 20px;
+			background-color: #000000;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.download-button:hover {
+			background-color: #686969;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		.popup,
+		.report-popup,
+		.appointment-popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure popup is on the upper layer */
+		}
+
+		.popup-content,
+		.report-popup-content,
+		.appointment-popup-content {
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			width: 80%;
+			max-width: 600px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.closePopup,
+		.closeReportPopup,
+		.closeAppointmentPopup {
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			color: #333;
+		}
+
+		.closePopup:hover,
+		.closeReportPopup:hover,
+		.closeAppointmentPopup:hover {
+			color: #ff0000;
+		}
+
+		.calendar {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-top: 20px;
+		}
+
+		.calendar .day {
+			width: calc(100% / 7);
+			height: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid #ccc;
+			cursor: pointer;
+		}
+
+		.calendar .day:hover {
+			background-color: #f0f0f0;
+		}
+
+		.random-date-info {
+			margin-top: 20px;
+			font-size: 18px;
+			text-align: left;
+		}
+
+		.request-change-button {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 16px;
+			background-color: #000000;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.request-change-button:hover {
+			background-color: #3f3f3f;
+		}
+
+		.find-doctor-popup {
+			display: none;
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.popup-content {
+			background-color: #fff;
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+			max-width: 600px;
+			border-radius: 8px;
+			position: relative;
+		}
+
+		/* Close button style */
+		.closeFindDoctorPopup {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		/* Additional styles as needed */
+		.doctor-list {
+			margin-top: 20px;
+			border-top: 1px solid #ccc;
+			padding-top: 10px;
+		}
+
+		.doctor-item {
+			cursor: pointer;
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.time-slots {
+			margin-top: 20px;
+			border-top: 1px solid #ccc;
+			padding-top: 10px;
+		}
+
+		.time-slot-item {
+			cursor: pointer;
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.patient-info-form {
+			margin-top: 20px;
+		}
+
+		.patient-info-form label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		.patient-info-form input,
+		.patient-info-form textarea {
+			width: 100%;
+			padding: 8px;
+			font-size: 14px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-bottom: 10px;
+		}
+
+		.confirmation-section {
+			margin-top: 20px;
+		}
+
+		.confirmation-section h3 {
+			margin-bottom: 10px;
+		}
+
+		.confirmation-section span {
+			font-weight: bold;
+		}
+
+		/* Lightbox styles */
+		.lightbox {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.8);
+			animation: fadeIn 0.5s;
+			border-radius: 10px;
+			border: #f0f0f0;
+
+		}
+
+		.lightbox-content {
+			position: relative;
+			margin: auto;
+			padding: 0;
+			width: 80%;
+			max-width: 1200px;
+			height: 80%;
+			background-color: #fff;
+			transform: scale(0);
+			animation: scaleUp 0.5s forwards;
+		}
+
+		.lightbox-content iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: red;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		/* Animations */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes scaleUp {
+			from {
+				transform: scale(0);
+			}
+
+			to {
+				transform: scale(1);
+			}
+		}
+
+
+		/* Define keyframes for moving effect */
+		@keyframes moveUpDown {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-20px);
+			}
+		}
+
+		@keyframes moveLeftRight {
+
+			0%,
+			100% {
+				transform: translateX(0);
+			}
+
+			50% {
+				transform: translateX(20px);
+			}
+		}
+
+		/* Apply animations to the elements */
+		.page-title-icon {
+			animation: moveUpDown 3s infinite ease-in-out;
+		}
+
+		.page-title-icon-two {
+			animation: moveLeftRight 3s infinite ease-in-out;
+		}
+
+
+		*, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.containerxx {
+  position: relative;
+}
+.containerxx i {
+  position: absolute;
+  left: -30px;
+  top: -30px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px 100px 0 100px;
+  transform-origin: 30px 30px;
+  mix-blend-mode: plus-lighter;
+  box-shadow: 25px 25px 5px var(--color) inset, 5px 5px 50px var(--color);
+  -webkit-animation: i var(--duration) var(--delay) infinite linear;
+          animation: i var(--duration) var(--delay) infinite linear;
+}
+@-webkit-keyframes i {
+  to {
+    rotate: 1turn;
+  }
+}
+@keyframes i {
+  to {
+    rotate: 1turn;
+  }
+}
+.containerxx i:nth-child(odd) {
+  animation-direction: reverse;
+}
+.containerxx i:nth-child(1) {
+  --color: hsl(0 100% 50% / 0.25);
+  --delay: -9.67s;
+  --duration: 5.918s;
+}
+.containerxx i:nth-child(2) {
+  --color: hsl(1 100% 50% / 0.25);
+  --delay: -7.5s;
+  --duration: 7.064s;
+}
+.containerxx i:nth-child(3) {
+  --color: hsl(2 100% 50% / 0.25);
+  --delay: -2.86s;
+  --duration: 8.394s;
+}
+.containerxx i:nth-child(4) {
+  --color: hsl(3 100% 50% / 0.25);
+  --delay: -9.58s;
+  --duration: 9.474s;
+}
+.containerxx i:nth-child(5) {
+  --color: hsl(4 100% 50% / 0.25);
+  --delay: -9.71s;
+  --duration: 10.805s;
+}
+.containerxx i:nth-child(6) {
+  --color: hsl(5 100% 50% / 0.25);
+  --delay: -7.36s;
+  --duration: 11.787s;
+}
+.containerxx i:nth-child(7) {
+  --color: hsl(6 100% 50% / 0.25);
+  --delay: -2.57s;
+  --duration: 13.101s;
+}
+.containerxx i:nth-child(8) {
+  --color: hsl(7 100% 50% / 0.25);
+  --delay: -3.5s;
+  --duration: 14.29s;
+}
+.containerxx i:nth-child(9) {
+  --color: hsl(8 100% 50% / 0.25);
+  --delay: -7.99s;
+  --duration: 15.746s;
+}
+.containerxx i:nth-child(10) {
+  --color: hsl(9 100% 50% / 0.25);
+  --delay: -6.96s;
+  --duration: 16.421s;
+}
+.containerxx i:nth-child(11) {
+  --color: hsl(10 100% 50% / 0.25);
+  --delay: -4.83s;
+  --duration: 17.181s;
+}
+.containerxx i:nth-child(12) {
+  --color: hsl(11 100% 50% / 0.25);
+  --delay: -1.51s;
+  --duration: 17.806s;
+}
+.containerxx i:nth-child(13) {
+  --color: hsl(12 100% 50% / 0.25);
+  --delay: -5.92s;
+  --duration: 18.448s;
+}
+.containerxx i:nth-child(14) {
+  --color: hsl(13 100% 50% / 0.25);
+  --delay: -7.72s;
+  --duration: 19.363s;
+}
+.containerxx i:nth-child(15) {
+  --color: hsl(14 100% 50% / 0.25);
+  --delay: -1.06s;
+  --duration: 20.351s;
+}
+.containerxx i:nth-child(16) {
+  --color: hsl(15 100% 50% / 0.25);
+  --delay: -5.62s;
+  --duration: 21.142s;
+}
+.containerxx i:nth-child(17) {
+  --color: hsl(16 100% 50% / 0.25);
+  --delay: -1.1s;
+  --duration: 22.618s;
+}
+.containerxx i:nth-child(18) {
+  --color: hsl(17 100% 50% / 0.25);
+  --delay: -0.73s;
+  --duration: 23.878s;
+}
+.containerxx i:nth-child(19) {
+  --color: hsl(18 100% 50% / 0.25);
+  --delay: -3.24s;
+  --duration: 24.759s;
+}
+.containerxx i:nth-child(20) {
+  --color: hsl(19 100% 50% / 0.25);
+  --delay: -1.15s;
+  --duration: 26.17s;
+}
+.containerxx i:nth-child(21) {
+  --color: hsl(20 100% 50% / 0.25);
+  --delay: -1.3s;
+  --duration: 26.96s;
+}
+.containerxx i:nth-child(22) {
+  --color: hsl(21 100% 50% / 0.25);
+  --delay: -2.98s;
+  --duration: 28.351s;
+}
+.containerxx i:nth-child(23) {
+  --color: hsl(22 100% 50% / 0.25);
+  --delay: -4.92s;
+  --duration: 29.04s;
+}
+.containerxx i:nth-child(24) {
+  --color: hsl(23 100% 50% / 0.25);
+  --delay: -9.57s;
+  --duration: 30.33s;
+}
+.containerxx i:nth-child(25) {
+  --color: hsl(24 100% 50% / 0.25);
+  --delay: -1.33s;
+  --duration: 31.163s;
+}
+.containerxx i:nth-child(26) {
+  --color: hsl(25 100% 50% / 0.25);
+  --delay: -2.31s;
+  --duration: 32.103s;
+}
+.containerxx i:nth-child(27) {
+  --color: hsl(26 100% 50% / 0.25);
+  --delay: -9.25s;
+  --duration: 33.399s;
+}
+.containerxx i:nth-child(28) {
+  --color: hsl(27 100% 50% / 0.25);
+  --delay: -8.38s;
+  --duration: 33.972s;
+}
+.containerxx i:nth-child(29) {
+  --color: hsl(28 100% 50% / 0.25);
+  --delay: -6.14s;
+  --duration: 35.234s;
+}
+.containerxx i:nth-child(30) {
+  --color: hsl(29 100% 50% / 0.25);
+  --delay: -7.94s;
+  --duration: 36.249s;
+}
+.containerxx i:nth-child(31) {
+  --color: hsl(30 100% 50% / 0.25);
+  --delay: -7.39s;
+  --duration: 36.876s;
+}
+.containerxx i:nth-child(32) {
+  --color: hsl(31 100% 50% / 0.25);
+  --delay: -0.76s;
+  --duration: 38.129s;
+}
+.containerxx i:nth-child(33) {
+  --color: hsl(32 100% 50% / 0.25);
+  --delay: -0.49s;
+  --duration: 39.622s;
+}
+.containerxx i:nth-child(34) {
+  --color: hsl(33 100% 50% / 0.25);
+  --delay: -7.13s;
+  --duration: 40.163s;
+}
+.containerxx i:nth-child(35) {
+  --color: hsl(34 100% 50% / 0.25);
+  --delay: -9.49s;
+  --duration: 40.937s;
+}
+.containerxx i:nth-child(36) {
+  --color: hsl(35 100% 50% / 0.25);
+  --delay: -0.35s;
+  --duration: 42.163s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+@keyframes scaleUpDown {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50%,
+  90% {
+    transform: scaleY(1.1);
+  }
+  75% {
+    transform: scaleY(0.95);
+  }
+  80% {
+    transform: scaleX(0.95);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: skewX(0) scale(1);
+  }
+  50% {
+    transform: skewX(5deg) scale(0.9);
+  }
+}
+
+@keyframes particleUp {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: -100%;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    background-color: #ef5a00;
+  }
+  50% {
+    background-color: #ff7800;
+  }
+}
+
+.fire {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fire-center {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: scaleUpDown 3s ease-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  .main-fire {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      farthest-corner at 10px 0,
+      #d43300 0%,
+      #ef5a00 95%
+    );
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 0 40% 60% 40%;
+    filter: drop-shadow(0 0 10px #d43322);
+  }
+
+  .particle-fire {
+    position: absolute;
+    top: 60%;
+    left: 45%;
+    width: 10px;
+    height: 10px;
+    background-color: #ef5a00;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px #d43322);
+    animation: particleUp 2s ease-out 0;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+}
+
+.fire-right {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  animation: shake 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  .main-fire {
+    position: absolute;
+    top: 15%;
+    right: -25%;
+    width: 80%;
+    height: 80%;
+    background-color: #ef5a00;
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 0 40% 60% 40%;
+    filter: drop-shadow(0 0 10px #d43322);
+  }
+
+  .particle-fire {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #ef5a00;
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px #d43322);
+    animation: particleUp 2s ease-out 0;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+}
+
+.fire-left {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: shake 3s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+
+  .main-fire {
+    position: absolute;
+    top: 15%;
+    left: -20%;
+    width: 80%;
+    height: 80%;
+    background-color: #ef5a00;
+    transform: scaleX(0.8) rotate(45deg);
+    border-radius: 0 40% 60% 40%;
+    filter: drop-shadow(0 0 10px #d43322);
+  }
+
+  .particle-fire {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 10%;
+    height: 10%;
+    background-color: #ef5a00;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px #d43322);
+    animation: particleUp 3s infinite ease-out 0;
+    animation-fill-mode: both;
+  }
+}
+
+.fire-bottom .main-fire {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  width: 75%;
+  height: 75%;
+  background-color: #ff7800;
+  transform: scaleX(0.8) rotate(45deg);
+  border-radius: 0 40% 100% 40%;
+  filter: blur(10px);
+  animation: glow 2s ease-out 0;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+	
+	<!-- Cursor -->
+	<div class="cursor"></div>
+	<div class="cursor-follower"></div>
+	<!-- Cursor End -->
+ 	
+	<!-- Preloader -->
+	<div class="loader-wrap">
+		<div class="preloader">
+			<div class="preloader-close">x</div>
+			<div id="handle-preloader" class="handle-preloader">
+				<div class="animation-preloader">
+					<div class="txt-loading">
+						<span data-text-preloader="C" class="letters-loading">C</span>
+						<span data-text-preloader="E" class="letters-loading">E</span>
+						<span data-text-preloader="Y" class="letters-loading">Y</span>
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="N" class="letters-loading">N</span><br>
+						<span data-text-preloader=" " class="letters-loading">&nbsp;</span>
+						<span data-text-preloader=" " class="letters-loading">&nbsp;</span>
+						<span data-text-preloader="H" class="letters-loading">H</span>
+						<span data-text-preloader="O" class="letters-loading">O</span>
+						<span data-text-preloader="S" class="letters-loading">S</span>
+						<span data-text-preloader="P" class="letters-loading">P</span>
+						<span data-text-preloader="I" class="letters-loading">I</span>
+						<span data-text-preloader="T" class="letters-loading">T</span>
+						<span data-text-preloader="A" class="letters-loading">A</span>
+						<span data-text-preloader="L" class="letters-loading">L</span>
+						<span data-text-preloader="S" class="letters-loading">S</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+	
+	<!-- Main Header -->
+	<header class="main-header header-style-three">
+
+		<!-- Header Lower -->
+		<div class="header-lower">
+			<div class="auto-container">
+				<div class="inner-container">
+					<div class="d-flex align-items-center justify-content-between flex-wrap">
+
+						<div class="nav-outer d-flex align-items-center flex-wrap">
+							<div class="logo-box">
+								<div class="logo"><a href="/"><img src="assets/images/logo.png" alt=""
+											title="" width="130px" height="130px"></a></div>
+							</div>
+							<!-- Main Menu -->
+							<nav class="main-menu navbar-expand-md">
+								<div class="navbar-header">
+									<!-- Toggle Button -->
+									<button class="navbar-toggler" type="button" data-toggle="collapse"
+										data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+										aria-expanded="false" aria-label="Toggle navigation">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+
+								<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+									<ul class="navigation clearfix">
+										<li><a href="/">Home</a></li>
+										<li><a href="/about">About</a></li>
+										<li><a href="/facilities">Facilities</a></li>
+										<li><a href="/services">Services</a></li>
+										<li><a href="/consultants">Consultants</a></li>
+										<li><a href="/blog">Blog</a></li>
+										<li><a href="/contact">Contact</a></li>
+									</ul>
+								</div>
+							</nav>
+						</div>
+
+						<!-- Main Menu End-->
+						<div class="outer-box d-flex align-items-center flex-wrap">
+
+							<!-- Social Box -->
+
+
+							<!-- Language DropDown -->
+							<div class="language-dropdown">
+								<i class="fas fa-map-marker-alt"></i>
+								<span id="location-name">Loading...</span>
+							</div>
+
+
+							<style>
+								.language-dropdown {
+									display: flex;
+									align-items: center;
+									background-color: #2e6303;
+									/* Dark background for contrast */
+									padding: 5px 10px;
+									/* Reduced padding for a smaller size */
+									border-radius: 4px;
+									/* Slightly rounded corners */
+									box-shadow: 0 2px 4px rgba(102, 207, 4, 0.2);
+									/* Subtle shadow for depth */
+									font-family: 'Arial', sans-serif;
+									/* Modern, clean font */
+									color: white;
+									/* White text color */
+									font-size: 18px;
+									/* Smaller font size */
+								}
+
+								.language-dropdown i {
+									font-size: 18px;
+									/* Smaller icon size */
+									margin-right: 8px;
+									/* Spacing between icon and text */
+								}
+
+								.language-dropdown #location-name {
+									font-size: 15px;
+									/* Same font size as container */
+									font-weight: 520;
+									/* Normal text weight */
+								}
+
+								/* Add hover effect for better interactivity */
+								.language-dropdown:hover {
+									background-color: #333;
+									/* Slightly lighter background on hover */
+									cursor: pointer;
+									/* Pointer cursor on hover */
+								}
+							</style>
+
+
+							<script>
+								document.addEventListener('DOMContentLoaded', function () {
+									// Function to fetch user's location data
+									async function getLocationData() {
+										try {
+											// Replace 'your_token_here' with your actual ipinfo API token
+											let response = await fetch('https://ipinfo.io/json?token=6c8d674cb9fd67');
+											let data = await response.json();
+
+											if (data && data.city && data.country) {
+												const location = `${data.city}, ${data.country}`;
+
+												// Update the location in the HTML
+												document.getElementById('location-name').textContent = location;
+											} else {
+												document.getElementById('location-name').textContent = 'Unknown';
+											}
+										} catch (error) {
+											console.error('Error fetching location data:', error);
+											document.getElementById('location-name').textContent = 'Unknown';
+										}
+									}
+
+									// Call the function to get location data when the page loads
+									getLocationData();
+								});
+
+							</script>
+
+							<!-- Button Box -->
+							<div class="main-header_buttons">
+								<a href="#" class="template-btn btn-style-two">
+									<span class="btn-wrap">
+										<span class="text-one">Login</span>
+										<span class="text-two">Login</span>
+									</span>
+								</a>
+								<a href="" class="template-btn btn-style-one" id="open-lightbox">
+									<span class="btn-wrap">
+										<span class="text-one">Doc Ai</span>
+										<span class="text-two">Doc Ai</span>
+									</span>
+								</a>
+
+								<!-- Lightbox Modal -->
+								<div id="lightbox" class="lightbox">
+									<div class="lightbox-content">
+										<span class="close">&times;</span>
+										<iframe id="lightbox-iframe" src="" frameborder="0"></iframe>
+									</div>
+								</div>
+
+								<script src="assets/js/script.js"></script>
+							</div>
+
+							<!-- Mobile Navigation Toggler -->
+							<div class="mobile-nav-toggler">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2"
+									width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+									stroke="currentColor" fill="none" stroke-linecap="round"
+									stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M4 6l16 0" />
+									<path d="M4 12l16 0" />
+									<path d="M4 18l16 0" />
+								</svg>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--End Header Lower-->
+
+		<!-- Mobile Menu  -->
+		<div class="mobile-menu">
+			<div class="menu-backdrop"></div>
+			<div class="close-btn"><span class="icon fa-solid fa-xmark fa-fw"></span></div>
+
+			<nav class="menu-box">
+				<div class="nav-logo"><a href="/"><img src="assets/images/logo.png" width="200px"
+							height="200px" alt="" title=""></a></div>
+				<div class="menu-outer">
+					<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+				</div>
+			</nav>
+		</div>
+		<!-- End Mobile Menu -->
+
+	</header>
+	<!-- End Main Header -->
+	
+	<!-- Page Title -->
+    <section class="page-title">
+		<div class="page-title-icon" style="background-image:url(assets/images/icons/page-title_icon-1\ \(2\).png)">
+		</div>
+		<div class="page-title-icon-two" style="background-image:url(assets/images/icons/altair.png)"></div>
+		<div class="page-title-shadow" style="background-image:url(assets/images/background/page-title-1.png)"></div>
+		<div class="page-title-shadow_two" style="background-image:url(assets/images/background/page-title-2.png)"></div>
+        <div class="auto-container">
+			<h2>Articles</h2>
+			<ul class="bread-crumb clearfix">
+				<li><a href="/">Blog</a></li>
+				<li>Ayurvedic Response to COVID-19</li>
+			</ul>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+	<!-- Sidebar Page Container -->
+    <div class="sidebar-page-container">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+				
+				<!-- Content Side -->
+                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+					<div class="blog-detail">
+						<div class="blog-detail_inner">
+							<div class="blog-detail_image">
+								<img src="https://s.yimg.com/ny/api/res/1.2/u6F4bJ4UXlxDF_OwvX0nTw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/en/latestly_557/af9d6e6ddde45ca13193827f92d8bd8c" alt="" />
+							</div>
+							<div class="blog-detail_content">
+								<h3 class="blog-detail_heading" style="text-align: center;">Ayurvedic Response to COVID-19</h3>
+								<div class="blog-detail_author-outer d-flex align-items-center flex-wrap">
+									<div class="blog-detail-author d-flex align-items-center flex-wrap">
+										<div class="blog-detail-author-image">
+											<img src="https://i.ibb.co/d08nZFf/channels4-profile.jpg" alt="" />
+										</div>
+										<i>By Ceylon Hospitals Commiunity</i>
+									</div>
+									<ul class="blog-detail-meta d-flex align-items-center flex-wrap">
+										<li><span class="icon fa-regular fa-calendar fa-fw"></span>29 July, 2024</li>
+										<li><span class="icon fa-regular fa-comment-dots fa-fw"></span>0 Comments</li>
+									</ul>
+								</div>
+								<p style="text-align: justify;">During the COVID-19 pandemic, Patanjali Ayurved launched Coronil, an Ayurvedic formulation claimed to aid in COVID-19 treatment. The medicine, part of a comprehensive kit, includes herbs like Giloy, Ashwagandha, and Tulsi, known for their immune-boosting properties. While Coronil sparked controversy and debates about its efficacy, it underscored the potential of Ayurvedic medicine in addressing modern health crises. Continued research and scrutiny are essential to validate such claims and integrate Ayurveda effectively into global healthcare responses.</p>
+								<!-- <blockquote>
+									<div class="blockquote_bg" style="background-image:url(assets/images/background/172223228837900691.png)"></div>
+									<i class="icon-quote-1"></i>
+									By integrating Ayurveda's personalized approach with modern medicine, we can revolutionize healthcare and enhance patient outcomes.
+									<div class="text-right">
+										<span>Dr. Anjali Sharma (Ayurvedic Practitioner)</span>
+									</div>
+								</blockquote> -->
+								<div class="video-box" onclick="openVideo()">
+									<img src="https://www.mamcbhopal.com/images/role-of-ayurveda-in-fighting-covid-max.jpg" alt="" />
+									<div class="overlay-box">
+										<span class="fa-solid fa-play fa-fw">
+											<i class="ripple"></i>
+										</span>
+									</div>
+								</div>
+								
+								<!-- Hidden iframe for YouTube video -->
+								<div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 9999;">
+									<iframe id="videoIframe" width="560" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+								</div>
+								
+								<script>
+									function openVideo() {
+										const videoOverlay = document.getElementById('videoOverlay');
+										const videoIframe = document.getElementById('videoIframe');
+										videoIframe.src = "https://www.youtube.com/embed/7n97-FppNXc?autoplay=1";
+										videoOverlay.style.display = "flex";
+										videoOverlay.onclick = function () {
+											videoOverlay.style.display = "none";
+											videoIframe.src = "";
+										};
+									}
+								</script>
+								<h3 style="text-align: center;">The Formulation and Its Claims</h3>
+								<p style="text-align: justify;">Coronil is part of a trio of products designed to support immune health and combat COVID-19 symptoms.
+									<p>It includes:</p>
+								<ul class="blog-detail_list"> 
+									<li><i class="fa-solid fa-check fa-fw"></i>&nbsp;&nbsp;<b>Giloy <span style="font-style: italic;">(Tinospora cordifolia)</span></b> Known for its anti-inflammatory and antipyretic properties.</li>
+									<li><i class="fa-solid fa-check fa-fw"></i>&nbsp;&nbsp;<b>Ashwagandha <span style="font-style: italic;">(Withania somnifera)</span></b> Recognized for its adaptogenic and immune-boosting effects.</li>
+									<li><i class="fa-solid fa-check fa-fw"></i>&nbsp;&nbsp;<b>Tulsi <span style="font-style: italic;">(Ocimum sanctum)</span></b> Traditionally used for its antimicrobial and anti-inflammatory properties.</li>
+								</ul>
+								<p style="text-align: justify;">Patanjali claimed that Coronil could help in reducing the severity of COVID-19 symptoms and support faster recovery. The launch of Coronil brought significant attention to Ayurvedic practices and their potential role in managing viral infections.</p>
+								
+								<h3 style="text-align: center;">Controversies and Debates</h3>
+								<p style="text-align: justify;">The introduction of Coronil was not without controversy. Critics pointed out the lack of extensive clinical trials and peer-reviewed studies to support its efficacy. The Indian Ministry of AYUSH initially questioned the claims, leading to a temporary halt in the promotion of Coronil as a COVID-19 cure. Eventually, Patanjali rebranded it as an immunity booster rather than a definitive cure for COVID-19.</p><br>
+								<p style="text-align: justify;">Despite these challenges, the controversy highlighted the importance of rigorous scientific validation for Ayurvedic treatments. It sparked discussions on the integration of traditional medicine with modern scientific approaches to ensure safety and efficacy.</p>
+								<br>
+								<h3 style="text-align: center;">Scientific Research and Validation</h3>
+								<p style="text-align: justify;">The COVID-19 pandemic emphasized the need for comprehensive research into alternative and complementary medicine. Studies on the individual components of Coronil, such as Giloy and Ashwagandha, have shown promising results in enhancing immune function and reducing inflammation. However, more extensive, randomized clinical trials are necessary to confirm the effectiveness of Coronil as a treatment for COVID-19.</p><br>
+								<p style="text-align: justify;">Researchers and practitioners advocate for a balanced approach, combining traditional Ayurvedic knowledge with modern scientific methodologies. This integration can pave the way for more effective treatments and preventive strategies, especially in the face of global health crises.</p>
+								<!-- Post Share Options-->
+								<div class="post-share-options">
+									<div class="post-share-inner d-flex justify-content-between flex-wrap">
+										<div class="post-tags"><a href="#">Ayurveda</a> <a href="#">Scientific</a> <a href="/">ceylonhospital</a></div>
+										<ul class="social-links">
+											<li><a href="#" class="fa-brands fa-facebook-f fa-fw"></a></li>
+											<li><a href="#" class="fa-brands fa-twitter fa-fw"></a></li>
+											<li><a href="#" class="fa-brands fa-google fa-fw"></a></li>
+											<li><a href="#" class="fa-brands fa-dribbble fa-fw"></a></li>
+										</ul>
+									</div>
+								</div>
+
+								<!-- Author Box -->
+								<div class="blog-author_box">
+									<div class="blog-author-box_inner">
+										<div class="blog-author-box_content">
+											<div class="blog-author-box_image">
+												<img src="https://i.ibb.co/d08nZFf/channels4-profile.jpg" alt="" />
+											</div>
+											<h5>Ceylon Hospital Commiunity</h5>
+											<div class="blog-author_box-designation">Indigenous Medical Hospital</div>
+											<div class="blog-author_box-text" style="text-align: justify;">Ceylon hospital with more than 1000 indigenous physicians is now opening the global doors of propagation of all the Sri Lankan indigenous medical systems </div>
+											<ul class="author-social_links">
+												<li><a href="#" class="fa-brands fa-facebook-f fa-fw"></a></li>
+												<li><a href="#" class="fa-brands fa-twitter fa-fw"></a></li>
+												<li><a href="#" class="fa-brands fa-google fa-fw"></a></li>
+												<li><a href="#" class="fa-brands fa-dribbble fa-fw"></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<!-- Comment Form -->
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Sidebar Side -->
+				<div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                	<aside class="sidebar">
+						<div class="sidebar-inner">
+
+							<!-- Search Widget -->
+							<div class="sidebar-widget search-box">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Search here</h5>
+									<form method="post" action="">
+										<div class="form-group">
+											<input type="search" name="search-field" value="" placeholder="Search..." required>
+											<button type="submit"><span class="icon fa fa-search"></span></button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- Post Widget -->
+							<div class="sidebar-widget post-widget">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Latest post</h5>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="assets/images/resource/blogs.png" alt="" style="border-radius: 15px;"></a></div>
+										<h6><a href="blog-detail.html">The Healing Power of Ayurveda : Ancient Wisdom for Modern Health</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> June 28, 2024</div>
+									</div>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="assets/images/resource/blogs (1).png" alt="" style="border-radius: 15px;"></a></div>
+										<h6><a href="blog-detail.html">Ayurvedic Remedies for Common Ailments</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i> June 20, 2024</div>
+									</div>
+
+									<div class="post">
+										<div class="thumb"><a href="blog-detail.html"><img src="assets/images/resource/blogs (2).png" alt="" style="border-radius: 15px;"></a></div>
+										<h6><a href="blog-detail.html">Understanding Panchakarma in Ayurvedic Medicine</a></h6>
+										<div class="post-date"><i class="fa-regular fa-calendar fa-fw"></i>May  30, 2024</div>
+									</div>
+
+								</div>
+							</div>
+
+							<!-- Service Widget -->
+							<div class="sidebar-widget category-widget">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Categories</h5>
+									<ul class="service-list">
+										<li><a href="#">Ayurvedic Treatments<span>(03)</span></a></li>
+										<li><a href="#">Herbal Remedies<span>(04)</span></a></li>
+										<li><a href="#">Mind-Body Balance<span>(02)</span></a></li>
+										<li><a href="#">Healing and Rejuvenation<span>(05)</span></a></li>
+										<li><a href="#">Detox and Cleansing<span>(02)</span></a></li>
+									</ul>
+								</div>
+							</div>
+
+							<!-- Popular tags -->
+							<div class="sidebar-widget popular-tags">
+								<div class="widget-content">
+									<h5 class="sidebar-widget_title">Popular tags</h5>
+									<a href="#">Ayurveda</a>
+									<a href="#">HolisticHealth</a>
+									<a href="#">Mindfulness</a>
+									<a href="#">Rejuvenation</a>
+									<a href="#">Meditation</a>
+								</div>
+							</div>
+
+						</div>
+
+					</aside>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar Page Container -->
+	
+	<!-- CTA One -->
+	<section class="cta-one style-two">
+		<div class="cta-one_shadow" style="background-image:url(assets/images/background/cta-shadow.png)"></div>
+		<div class="auto-container">
+			<div class="inner-container">
+				<div class="cta-icon_one"
+					style="background-image:url(https://i.ibb.co/B3k11vB/BXC-151-x-133-px.png)"></div>
+				<div class="cta-icon_two" style="background-image:url(assets/images/icons/cta-icon-2.png)"></div>
+				<div class="cta-one_card">
+					<img src="assets/images/icons/CVD.png" alt="" />
+				</div>
+				<div class="row clearfix">
+					<!-- Column -->
+					<div class="cta-one_title-column col-lg-6 col-md-12 col-sm-12">
+						<div class="cta-one_title-outer">
+							<h2 class="cta-one_title">The Timeless Wisdom <span>of Ayurveda</span></h2>
+							<div class="cta-one_button">
+								<a href="/about" class="template-btn btn-style-three">
+									<span class="btn-wrap">
+										<span class="text-one">Explore Now</span>
+										<span class="text-two">Explore Now</span>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- Column -->
+					<div class="cta-one_image-column col-lg-6 col-md-12 col-sm-12">
+						<div class="cta-one_image-outer">
+							<div class="cta-one_cards">
+								<img src="assets/images/logo.png" height="250px" width="250px" alt="" />
+							</div>
+							<div class="image">
+								<img src="assets/images/resource/HEX.png" alt="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		
+	</section>
+	<!-- End CTA One -->
+
+	<!-- Main Footer -->
+	<footer class="main-footer style-three">
+		<div class="footer_pattern" style="background-image: url(assets/images/background/master-foot.png)">
+		</div>
+
+		<div class="auto-container">
+			<div class="inner-container">
+				<!-- Widgets Section -->
+				<div class="widgets-section">
+					<div class="row clearfix">
+
+						<!-- Big Column -->
+						<div class="big-column col-lg-7 col-md-12 col-sm-12">
+							<div class="footer-lists_outer">
+								<div class="row clearfix">
+									<!-- Column -->
+									<div class="column col-lg-5 col-md-4 col-sm-6">
+										<h5 class="footer-title">Services</h5>
+										<ul class="footer-pages_list">
+											<li><a href="#">Find a doctor</a></li>
+											<li><a href="#">Manage an Appoinment</a></li>
+											<li><a href="#">International Patients</a></li>
+											<li><a href="#">Online Pharmacy</a></li>
+											<li><a href="#">Download Report</a></li>
+											<li><a href="#">Ceylon Hospital Wellness</a></li>
+											<li><a href="#">Payments Portal</a></li>
+										</ul>
+									</div>
+									<!-- Column -->
+									<div class="column col-lg-3 col-md-4 col-sm-6">
+										<h5 class="footer-title">resources</h5>
+										<ul class="footer-pages_list">
+											<li><a href="#">Blog</a></li>
+											<li><a href="#">FAQs</a></li>
+											<li><a href="#">Help center</a></li>
+											<li><a href="#">DOC AI</a></li>
+											<li><a href="#">Explore Ayurveda</a></li>
+											<li><a href="#">Services</a></li>
+										</ul>
+									</div>
+									<!-- Column -->
+									<div class="column col-lg-4 col-md-4 col-sm-6">
+										<h5 class="footer-title">about us</h5>
+										<ul class="footer-pages_list">
+											<li><a href="#">Our History</a></li>
+											<li><a href="#">Our Values</a></li>
+											<li><a href="#">Management</a></li>
+											<li><a href="#">Consultants</a></li>
+											<li><a href="#">Carriers</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Big Column -->
+						<div class="big-column col-lg-5 col-md-12 col-sm-12">
+							<div class="footer-newsletter">
+								<h5 class="footer-title">Monthly Ayurvedic E-Magazine</h5>
+								<div class="footer-newsletter_text">Subscribe now to receive the latest
+									insights, tips, and news on Ayurvedic medicine directly to your inbox
+									each month</div>
+								<div class="newsletter-box">
+									<form method="post" action="#">
+										<div class="form-group">
+											<span class="icon fa-regular fa-envelope fa-fw"></span>
+											<input type="email" name="search-field" value=""
+												placeholder="Enter your mail" required>
+											<button type="submit" class="template-btn btn-style-one">
+												<span class="btn-wrap">
+													<span class="text-one">Subscribe</span>
+													<span class="text-two">Subscribe</span>
+												</span>
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="auto-container">
+				<div class="inner-container d-flex justify-content-between align-items-center flex-wrap">
+					<div class="apps-buttons d-flex align-items-center flex-wrap">
+						<a href="#"><img src="assets/images/icons/app-btn.png" alt="" /></a>
+						<a href="#"><img src="assets/images/icons/playstore.png" alt="" /></a>
+					</div>
+					<div class="footer-copyright">&copy; 2024 <a href="/">Ceylon Hospitals.</a> All
+						rights
+						reserved.
+					</div>
+					<!-- Social Box -->
+					<div class="footer-social_box">
+						<a href="https://facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+						<a href="https://twitter.com/"><i class="fa-brands fa-tiktok"></i></a>
+						<a href="https://youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+						<a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div>
+<!-- End PageWrapper -->
+
+<div class="progress-wrap">
+	<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+	</svg>
+</div>
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/appear.js"></script>
+<script src="assets/js/parallax.min.js"></script>
+<script src="assets/js/tilt.jquery.min.js"></script>
+<script src="assets/js/jquery.paroller.min.js"></script>
+<script src="assets/js/wow.js"></script>
+<script src="assets/js/swiper.min.js"></script>
+<script src="assets/js/backtotop.js"></script>
+<script src="assets/js/odometer.js"></script>
+<script src="assets/js/parallax-scroll.js"></script>
+
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<script src="assets/js/ScrollToPlugin.min.js"></script>
+<script src="assets/js/ScrollSmoother.min.js"></script>
+
+<script src="assets/js/touchspin.js"></script>
+<script src="assets/js/jquery.marquee.min.js"></script>
+<script src="assets/js/magnific-popup.min.js"></script>
+<script src="assets/js/nav-tool.js"></script>
+<script src="assets/js/jquery-ui.js"></script>
+<script src="assets/js/element-in-view.js"></script>
+<script src="assets/js/script.js"></script>
+
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+
+</body>
+
+
+</html>

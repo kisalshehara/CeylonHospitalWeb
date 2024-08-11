@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Ceylon Hospitals | About Us</title>
+	<!-- Stylesheets -->
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="assets/css/meanmenu.min.css" rel="stylesheet">
+	<link href="assets/css/responsive.css" rel="stylesheet">
+
+	<link
+		href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&amp;display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+		rel="stylesheet">
+
+	<link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+	<link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+
+	<!-- Responsive -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		.livechat-list {
+			text-align: justify;
+			padding: 0;
+		}
+
+		.animated-item {
+			position: relative;
+			background: linear-gradient(135deg, rgba(4, 119, 13, 0.6), rgba(20, 41, 0, 0.6));
+			color: white;
+			padding: 15px;
+			border-radius: 15px;
+			margin-bottom: 15px;
+			list-style: none;
+			overflow: hidden;
+			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		}
+
+		.animated-item::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.3);
+			z-index: -1;
+			border-radius: 15px;
+			animation: border-animation 3s infinite linear;
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		.animated-item:hover::before {
+			opacity: 0;
+		}
+
+		@keyframes border-animation {
+			0% {
+				transform: translateX(-100%);
+			}
+
+			50% {
+				transform: translateX(100%);
+			}
+
+			100% {
+				transform: translateX(-100%);
+			}
+		}
+
+		.animated-item i {
+			margin-right: 10px;
+			color: rgb(124, 124, 124);
+		}
+
+		.animated-item:hover {
+			transform: scale(1.05);
+		}
+
+		.livechat-list {
+			text-align: justify;
+			padding: 0;
+		}
+
+		.animated-item {
+			position: relative;
+			background: linear-gradient(135deg, rgba(4, 119, 14, 0.438), rgba(20, 41, 0, 0.6));
+			color: white;
+			padding: 15px;
+			border-radius: 15px;
+			margin-bottom: 15px;
+			list-style: none;
+			overflow: hidden;
+			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		}
+
+		.animated-item::before {
+			content: '';
+			position: absolute;
+			top: -5px;
+			left: -5px;
+			width: 10px;
+			height: 10px;
+			background-color: rgba(4, 119, 13, 0.8);
+			border-radius: 50%;
+			animation: move-dots 5s infinite linear;
+			z-index: -1;
+		}
+
+		@keyframes move-dots {
+
+			0%,
+			100% {
+				transform: translate(0, 0);
+			}
+
+			25% {
+				transform: translate(100%, 0);
+			}
+
+			50% {
+				transform: translate(100%, 100%);
+			}
+
+			75% {
+				transform: translate(0, 100%);
+			}
+		}
+
+		.animated-item i {
+			margin-right: 10px;
+			color: rgba(124, 124, 124, 0.493);
+		}
+
+		.animated-item:hover {
+			transform: scale(1.05);
+		}
+
+		.livechat_image-outer {
+			width: 100%;
+			/* Ensures the container spans the full width available */
+			max-width: 550px;
+			/* Limits maximum width to 550px */
+			height: auto;
+			/* Allows the height to adjust proportionally */
+			margin: 0 auto;
+			/* Centers the container horizontally */
+			overflow: hidden;
+			/* Ensures the video stays within its boundaries */
+			border-radius: 20px;
+			/* Adds rounded corners to the container */
+			box-shadow: 0 0 30px rgba(26, 124, 1, 0.493);
+			/* Optional: Adds a subtle shadow */
+		}
+
+		.livechat_image-outer video {
+			width: 100%;
+			/* Ensures the video fills its container */
+			height: 100%;
+			/* Ensures the video fills its container */
+			object-fit: cover;
+			/* Maintains aspect ratio and covers the entire container */
+			object-position: center;
+			/* Centers the video within the container */
+			border-radius: 20px;
+			/* Keeps the rounded corners inherited from the container */
+		}
+
+
+		.popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure popup is on the upper layer */
+		}
+
+		.popup-content {
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			width: 300px;
+			text-align: center;
+			position: relative;
+		}
+
+		.closePopup {
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			color: #333;
+		}
+
+		.closePopup:hover {
+			color: #ff0000;
+		}
+
+		#ongoingNumberDisplay {
+			margin-top: 20px;
+			font-size: 24px;
+			font-weight: bold;
+			font-family: 'Digital-7', monospace;
+			/* Example digital font */
+			color: #ff0000;
+		}
+
+		@keyframes blink {
+			0% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.blinking-cursor {
+			font-weight: bold;
+			font-size: 32px;
+			color: #ff0000;
+			animation: blink 1s step-end infinite;
+		}
+
+		select {
+			padding: 10px;
+			font-size: 16px;
+			margin-top: 10px;
+		}
+
+
+
+
+
+
+		.popup,
+		.report-popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure popup is on the upper layer */
+		}
+
+		.popup-content,
+		.report-popup-content {
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			width: 300px;
+			text-align: center;
+			position: relative;
+		}
+
+		.closePopup,
+		.closeReportPopup {
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			color: #333;
+		}
+
+		.closePopup:hover,
+		.closeReportPopup:hover {
+			color: #ff0000;
+		}
+
+		#ongoingNumberDisplay {
+			margin-top: 20px;
+			font-size: 24px;
+			font-family: 'Digital-7', monospace;
+			/* Example digital font */
+			color: #ff0000;
+		}
+
+		@keyframes blink {
+			0% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.blinking-cursor {
+			font-weight: bold;
+			font-size: 32px;
+			color: #ff0000;
+			animation: blink 1s step-end infinite;
+		}
+
+		select {
+			padding: 10px;
+			font-size: 16px;
+			margin-top: 10px;
+		}
+
+		.report-popup-content input[type="text"] {
+			width: 80%;
+			padding: 10px;
+			margin: 20px 0;
+			font-size: 16px;
+		}
+
+		.report-popup-content button {
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.loading {
+			display: none;
+			margin: 20px 0;
+			font-size: 16px;
+			color: #00aaff;
+		}
+
+		.download-button {
+			display: none;
+			margin-top: 20px;
+			padding: 10px 20px;
+			background-color: #000000;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.download-button:hover {
+			background-color: #686969;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		.popup,
+		.report-popup,
+		.appointment-popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			/* Ensure popup is on the upper layer */
+		}
+
+		.popup-content,
+		.report-popup-content,
+		.appointment-popup-content {
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			width: 80%;
+			max-width: 600px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.closePopup,
+		.closeReportPopup,
+		.closeAppointmentPopup {
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			color: #333;
+		}
+
+		.closePopup:hover,
+		.closeReportPopup:hover,
+		.closeAppointmentPopup:hover {
+			color: #ff0000;
+		}
+
+		.calendar {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-top: 20px;
+		}
+
+		.calendar .day {
+			width: calc(100% / 7);
+			height: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid #ccc;
+			cursor: pointer;
+		}
+
+		.calendar .day:hover {
+			background-color: #f0f0f0;
+		}
+
+		.random-date-info {
+			margin-top: 20px;
+			font-size: 18px;
+			text-align: left;
+		}
+
+		.request-change-button {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 16px;
+			background-color: #000000;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.request-change-button:hover {
+			background-color: #3f3f3f;
+		}
+
+		.find-doctor-popup {
+			display: none;
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.popup-content {
+			background-color: #fff;
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+			max-width: 600px;
+			border-radius: 8px;
+			position: relative;
+		}
+
+		/* Close button style */
+		.closeFindDoctorPopup {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		/* Additional styles as needed */
+		.doctor-list {
+			margin-top: 20px;
+			border-top: 1px solid #ccc;
+			padding-top: 10px;
+		}
+
+		.doctor-item {
+			cursor: pointer;
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.time-slots {
+			margin-top: 20px;
+			border-top: 1px solid #ccc;
+			padding-top: 10px;
+		}
+
+		.time-slot-item {
+			cursor: pointer;
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.patient-info-form {
+			margin-top: 20px;
+		}
+
+		.patient-info-form label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		.patient-info-form input,
+		.patient-info-form textarea {
+			width: 100%;
+			padding: 8px;
+			font-size: 14px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-bottom: 10px;
+		}
+
+		.confirmation-section {
+			margin-top: 20px;
+		}
+
+		.confirmation-section h3 {
+			margin-bottom: 10px;
+		}
+
+		.confirmation-section span {
+			font-weight: bold;
+		}
+
+		/* Lightbox styles */
+		.lightbox {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			z-index: 1000;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.8);
+			animation: fadeIn 0.5s;
+			border-radius: 10px;
+			border: #f0f0f0;
+
+		}
+
+		.lightbox-content {
+			position: relative;
+			margin: auto;
+			padding: 0;
+			width: 80%;
+			max-width: 1200px;
+			height: 80%;
+			background-color: #fff;
+			transform: scale(0);
+			animation: scaleUp 0.5s forwards;
+		}
+
+		.lightbox-content iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: red;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		/* Animations */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes scaleUp {
+			from {
+				transform: scale(0);
+			}
+
+			to {
+				transform: scale(1);
+			}
+		}
+
+
+		/* Define keyframes for moving effect */
+		@keyframes moveUpDown {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-20px);
+			}
+		}
+
+		@keyframes moveLeftRight {
+
+			0%,
+			100% {
+				transform: translateX(0);
+			}
+
+			50% {
+				transform: translateX(20px);
+			}
+		}
+
+		/* Apply animations to the elements */
+		.page-title-icon {
+			animation: moveUpDown 3s infinite ease-in-out;
+		}
+
+		.page-title-icon-two {
+			animation: moveLeftRight 3s infinite ease-in-out;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="page-wrapper">
+
+		<!-- Cursor -->
+		<div class="cursor"></div>
+		<div class="cursor-follower"></div>
+		<!-- Cursor End -->
+
+		<!-- Preloader -->
+		<div class="loader-wrap">
+			<div class="preloader">
+				<div class="preloader-close">x</div>
+				<div id="handle-preloader" class="handle-preloader">
+					<div class="animation-preloader">
+						<div class="txt-loading">
+							<span data-text-preloader="C" class="letters-loading">C</span>
+							<span data-text-preloader="E" class="letters-loading">E</span>
+							<span data-text-preloader="Y" class="letters-loading">Y</span>
+							<span data-text-preloader="L" class="letters-loading">L</span>
+							<span data-text-preloader="O" class="letters-loading">O</span>
+							<span data-text-preloader="N" class="letters-loading">N</span><br>
+							<span data-text-preloader=" " class="letters-loading">&nbsp;</span>
+							<span data-text-preloader=" " class="letters-loading">&nbsp;</span>
+							<span data-text-preloader="H" class="letters-loading">H</span>
+							<span data-text-preloader="O" class="letters-loading">O</span>
+							<span data-text-preloader="S" class="letters-loading">S</span>
+							<span data-text-preloader="P" class="letters-loading">P</span>
+							<span data-text-preloader="I" class="letters-loading">I</span>
+							<span data-text-preloader="T" class="letters-loading">T</span>
+							<span data-text-preloader="A" class="letters-loading">A</span>
+							<span data-text-preloader="L" class="letters-loading">L</span>
+							<span data-text-preloader="S" class="letters-loading">S</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Preloader End -->
+		<div id="chat-icon" class="chat-icon" onclick="toggleChat()">
+			💬
+		</div>
+
+		
+		<div id="chat-lightbox" class="chat-lightbox">
+			<iframe src="http://127.0.0.1:8000" frameborder="0"></iframe>
+			<span class="close" onclick="toggleChat()">✖</span>
+		</div>
+		<!-- Main Header -->
+		<header class="main-header header-style-three">
+
+			<!-- Header Lower -->
+			<div class="header-lower">
+				<div class="auto-container">
+					<div class="inner-container">
+						<div class="d-flex align-items-center justify-content-between flex-wrap">
+
+							<div class="nav-outer d-flex align-items-center flex-wrap">
+								<div class="logo-box">
+									<div class="logo"><a href="/"><img src="assets/images/logo.png" alt=""
+												title="" width="130px" height="130px"></a></div>
+								</div>
+								<!-- Main Menu -->
+								<nav class="main-menu navbar-expand-md">
+									<div class="navbar-header">
+										<!-- Toggle Button -->
+										<button class="navbar-toggler" type="button" data-toggle="collapse"
+											data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+											aria-expanded="false" aria-label="Toggle navigation">
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+
+									<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+										<ul class="navigation clearfix">
+											<li><a href="/">Home</a></li>
+											<li><a href="/about">About</a></li>
+											<li><a href="/facilities">Facilities</a></li>
+											<li><a href="/services">Services</a></li>
+											<li><a href="/consultants">Consultants</a></li>
+											<li><a href="/blog">Blog</a></li>
+											<li><a href="/contact">Contact</a></li>
+										</ul>
+									</div>
+								</nav>
+							</div>
+
+							<!-- Main Menu End-->
+							<div class="outer-box d-flex align-items-center flex-wrap">
+
+				
+
+								<!-- Button Box -->
+								<div class="main-header_buttons">
+									<a href="https://portal.ceylonhospital.com/" class="template-btn btn-style-two">
+										<span class="btn-wrap">
+											<span class="text-one">Login</span>
+											<span class="text-two">Login</span>
+										</span>
+									</a>
+									<a href="" class="template-btn btn-style-one" id="open-lightbox">
+										<span class="btn-wrap">
+											<span class="text-one">Doc Ai</span>
+											<span class="text-two">Doc Ai</span>
+										</span>
+									</a>
+
+									<!-- Lightbox Modal -->
+									<div id="lightbox" class="lightbox">
+										<div class="lightbox-content">
+											<span class="close">&times;</span>
+											<iframe id="lightbox-iframe" src="" frameborder="0"></iframe>
+										</div>
+									</div>
+
+									<script src="assets/js/script.js"></script>
+								</div>
+
+								<!-- Mobile Navigation Toggler -->
+								<div class="mobile-nav-toggler">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2"
+										width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+										stroke="currentColor" fill="none" stroke-linecap="round"
+										stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M4 6l16 0" />
+										<path d="M4 12l16 0" />
+										<path d="M4 18l16 0" />
+									</svg>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End Header Lower-->
+
+			<!-- Mobile Menu  -->
+			<div class="mobile-menu">
+				<div class="menu-backdrop"></div>
+				<div class="close-btn"><span class="icon fa-solid fa-xmark fa-fw"></span></div>
+
+				<nav class="menu-box">
+					<div class="nav-logo"><a href="/"><img src="assets/images/logo.png" width="200px"
+								height="200px" alt="" title=""></a></div>
+					<div class="menu-outer">
+						<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+					</div>
+				</nav>
+			</div>
+			<!-- End Mobile Menu -->
+
+		</header>
+
+		<!-- Page Title -->
+		<section class="page-title">
+
+			<div class="page-title-icon" style="background-image:url(assets/images/icons/page-title_icon-1\ \(2\).png)">
+			</div>
+			<div class="page-title-icon-two" style="background-image:url(assets/images/icons/altair.png)"></div>
+
+			<div class="page-title-shadow" style="background-image:url(assets/images/background/page-title-1.png)">
+			</div>
+			<div class="page-title-shadow_two" style="background-image:url(assets/images/background/page-title-2.png)">
+			</div>
+			<div class="auto-container">
+				<h2>About us</h2>
+				<ul class="bread-crumb clearfix">
+					<li><a href="/">Home</a></li>
+					<li>About us</li>
+				</ul>
+			</div>
+		</section>
+		<!-- End Page Title -->
+
+		<!-- Story One -->
+		<section class="story-one">
+			<div class="auto-container">
+				<div class="row clearfix">
+
+					<!-- Image Column -->
+					<div class="story-one_image-column col-lg-6 col-md-12 col-sm-12">
+						<div class="story-one_image-outer">
+							<div class="story-one_image">
+								<img src="assets/images/background/Chakra-Gif.gif" alt="" />
+							</div>
+						</div>
+					</div>
+
+					<!-- Image Column -->
+					<div class="story-one_content-column col-lg-6 col-md-12 col-sm-12">
+						<div class="story-one_content-outer">
+							<!-- Sec Title -->
+							<div class="sec-title style-four">
+								<div class="sec-title_title" style="color: rgb(26, 148, 2);">Our History</div>
+								<h2 class="sec-title_heading">Building a Legacy<span>of Wellness</span>
+								</h2>
+							</div>
+							<p>The narrative unfolds as we delve into the inception of our company, tracing the roots of
+								our vision for a future intertwined with artificial intelligence. Through the lens of
+								this captivating chronicle, readers will witness the trials and triumphs that have
+								shaped. the story weaves together the intricate threads of innovation</p>
+							<p>Through anecdotes and case studies, readers will witness the tangible difference our
+								innovations make in fields ranging from healthcare and finance to education and beyond.
+							</p>
+							<div class="story-one_button">
+								<a href="#" class="template-btn btn-style-one">
+									<span class="btn-wrap">
+										<span class="text-one">Know more</span>
+										<span class="text-two">Know more</span>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- End Assistance One -->
+
+		<!-- Value One -->
+		<section class="value-one">
+			<div class="auto-container">
+				<!-- Sec Title -->
+				<div class="sec-title style-four centered">
+					<div class="sec-title_title" style="color: rgb(26, 148, 2);">core value</div>
+					<h2 class="sec-title_heading">Guiding Principles for <span> Health</span> <br>and Wellness.</h2>
+				</div>
+				<div class="row clearfix">
+
+					<!-- Value Block One -->
+					<div class="value-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="value-block_one-inner">
+							<div class="value-block_one-icon">
+								<i class="icon-bulb1"></i>
+							</div>
+							<h5 class="value-block_one-title">Vision</h5>
+							<div class="value-block_one-text">To become a global leader in promoting holistic health and
+								wellness through the ancient wisdom, time-tested practices, and natural remedies of
+								Ayurveda.</div>
+						</div>
+					</div>
+
+					<!-- Value Block One -->
+					<div class="value-block_one active col-lg-4 col-md-6 col-sm-12">
+						<div class="value-block_one-inner">
+							<div class="value-block_one-icon">
+								<i class="fa-solid fa-bullseye fa-fw"></i>
+							</div>
+							<h5 class="value-block_one-title">Mission</h5>
+							<div class="value-block_one-text">To provide high-quality Ayurvedic products and services
+								that enhance the well-being of our customers, while preserving and sharing the rich
+								heritage of Ayurvedic medicine.</div>
+						</div>
+					</div>
+
+					<!-- Value Block One -->
+					<div class="value-block_one col-lg-4 col-md-6 col-sm-12">
+						<div class="value-block_one-inner">
+							<div class="value-block_one-icon">
+								<i class="fa fa-check-circle"></i>
+							</div>
+							<h5 class="value-block_one-title">Objective</h5>
+							<div class="value-block_one-text">To develop high-quality Ayurvedic products, educate
+								individuals on Ayurveda's benefits, and promote holistic health through sustainable
+								practices.</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Button Box -->
+
+			</div>
+		</section>
+		<!-- End Value One -->
+
+		<!-- Team One -->
+		<section class="team-one">
+			<div class="auto-container">
+				<div class="row clearfix">
+					<!-- Title Column -->
+					<div class="team-one_title-column col-lg-4 col-md-12 col-sm-12">
+						<div class="team-one_title-outer">
+							<!-- Sec Title -->
+							<div class="sec-title style-four">
+								<div class="sec-title_title" style="color: rgb(26, 148, 2);">Our Management</div>
+								<h2 class="sec-title_heading"> Leadership and <span>Expertise</span></h2>
+								<div class="sec-title_text">Our management team, comprised of seasoned professionals and
+									Ayurvedic experts, is dedicated to guiding our company towards innovation,
+									excellence, and global impact in holistic health and wellness.</div>
+							</div>
+							<!-- If we need navigation buttons -->
+							<div class="team-one_arrows">
+								<div class="team_carousel-prev fa-solid fa-angle-left fa-fw"></div>
+								<div class="team_carousel-next fa-solid fa-angle-right fa-fw"></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Team Column -->
+					<div class="team-one_team-column col-lg-8 col-md-12 col-sm-12">
+						<div class="team-one_team-outer">
+							<div class="team-carousel swiper-container">
+								<div class="swiper-wrapper">
+
+									<!-- Slide -->
+									<div class="swiper-slide">
+										<!-- Team Block One -->
+										<div class="team-block_one">
+											<div class="team-block_one-inner">
+												<div class="team-block_one-image">
+													<a href="/consultants"><img src="assets/images/Dr devinda.jpg"
+															alt="" style="height: 430px;" /></a>
+												</div>
+												<div class="team-block_one-content">
+													<h4 class="team-block_one-title"><a href="/consultants">Dr.
+															Devinda Hettiarachchi
+
+														</a></h4>
+													<div class="team-block_one-designation">Co-Founder & Director</div>
+													<!-- Social Box -->
+													<div class="team-block_one-socials">
+														<a href="https://facebook.com/"><i
+																class="fa-brands fa-facebook-f"></i></a>
+														<a href="https://twitter.com/"><i
+																class="fa-brands fa-twitter"></i></a>
+														<a href="https://linkedin.com/"><i
+																class="fa-brands fa-linkedin-in"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Slide -->
+									<div class="swiper-slide">
+										<!-- Team Block One -->
+										<div class="team-block_one">
+											<div class="team-block_one-inner">
+												<div class="team-block_one-image">
+													<a href="/consultants"><img src="assets/images/Placido.jpg"
+															alt="" /></a>
+												</div>
+												<div class="team-block_one-content">
+													<h4 class="team-block_one-title"><a href="/consultants">Mr.
+															Priyanath Fernando</a></h4>
+													<div class="team-block_one-designation">Co-Founder & Director</div>
+													<!-- Social Box -->
+													<div class="team-block_one-socials">
+														<a href="https://facebook.com/"><i
+																class="fa-brands fa-facebook-f"></i></a>
+														<a href="https://twitter.com/"><i
+																class="fa-brands fa-twitter"></i></a>
+														<a href="https://linkedin.com/"><i
+																class="fa-brands fa-linkedin-in"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- End Team One -->
+
+		<!-- Testimonial Three -->
+		<section class="testimonial-three">
+			<div class="auto-container">
+				<!-- Sec Title -->
+				<div class="sec-title style-three centered">
+					<div class="sec-title_title">Client Testimonials</div>
+					<h2 class="sec-title_heading">Our clients share their <br> wellness <span>journey</span></h2>
+				</div>
+
+				<div class="three-item_carousel ">
+					<div class="swiper-wrapper">
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<!-- Testimonial Block One -->
+							<div class="testimonial-block_one">
+								<div class="testimonial-block_one-inner">
+									<div class="testimonial-block_one-rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<div class="testimonial-block_one-text" style="text-align: justify;">As a senior
+										lecturer in Siddha Medicine, I
+										am extremely happy to see the establishment of Ceylon Hospital, Sri Lanka's
+										first private indigenous hospital. The hospital effortlessly integrates
+										contemporary facilities with ancient medical traditions to provide the greatest
+										treatments and care.</div>
+									<div class="testimonial-block_one-author_box">
+										<div class="testimonial-block_one-author-image">
+											<img src="https://fsm.tc.esn.ac.lk/wp-content/uploads/2023/08/unnamed-4.jpg"
+												alt="" />
+										</div>
+										Dr. S. Ushakhanthan <span>Senior Lecturer <br>(Eastern University, Sri
+											Lanka)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<!-- Testimonial Block One -->
+							<div class="testimonial-block_one">
+								<div class="testimonial-block_one-inner">
+									<div class="testimonial-block_one-rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star-half"></span>
+									</div>
+									<div class="testimonial-block_one-text" style="text-align: justify;">We appreciate
+										the friendly and efficient
+										service provided by your institution, as well as the successful implementation
+										of effective treatments.</div> <br><br><br><br><br>
+									<div class="testimonial-block_one-author_box">
+										<div class="testimonial-block_one-author-image">
+											<img src="https://i.ibb.co/khks4yr/Whats-App-Image-2024-07-08-at-11-29-20-AM.jpg"
+												alt="" />
+										</div>
+										Dr. Parakrama Hemachandra <span>Director<br>National Ayurvedic Teaching
+											Hospital <br> Rajagiriya , Sri Lanka</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<!-- Testimonial Block One -->
+							<div class="testimonial-block_one">
+								<div class="testimonial-block_one-inner">
+									<div class="testimonial-block_one-rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<div class="testimonial-block_one-text">As a senior lecturer in Siddha Medicine, I
+										am extremely happy to see the establishment of Ceylon Hospital, Sri Lanka's
+										first private indigenous hospital. The hospital effortlessly integrates
+										contemporary facilities with ancient medical traditions to provide the greatest
+										treatments and care.</div>
+									<div class="testimonial-block_one-author_box">
+										<div class="testimonial-block_one-author-image">
+											<img src="https://fsm.tc.esn.ac.lk/wp-content/uploads/2023/08/unnamed-4.jpg"
+												alt="" />
+										</div>
+										Dr. S. Ushakhanthan <span>Senior Lecturer <br>(Eastern University, Sri
+											Lanka)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<!-- If we need pagination -->
+					<div class="three-item_carousel-pagination"></div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Testimonial Three -->
+
+		<!-- Clients Two -->
+		<section class="clients-two">
+			<div class="auto-container">
+				<!-- Sec Title -->
+				<div class="sec-title centered">
+					<div class="sec-title_title">Trusted Partners</div>
+				</div>
+				<div class="clients_slider swiper-container">
+					<div class="swiper-wrapper">
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<div class="client-image">
+								<a href="#"><img src="https://i.ibb.co/Ydw0x9c/nc1-1.png" alt="" /></a>
+							</div>
+						</div>
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<div class="client-image">
+								<a href="#"><img src="https://i.ibb.co/R9YzG38/nc2.png" alt="" /></a>
+							</div>
+						</div>
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<div class="client-image">
+								<a href="#"><img src="https://i.ibb.co/6nhvS30/nc5-3.png" alt="" /></a>
+							</div>
+						</div>
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<div class="client-image">
+								<a href="#"><img src="https://i.ibb.co/QCZD1Js/nc4.png" alt="" /></a>
+							</div>
+						</div>
+
+						<!-- Slide -->
+						<div class="swiper-slide">
+							<div class="client-image">
+								<a href="#"><img src="https://i.ibb.co/HNYQ9Mz/nc5-1.png" alt="" /></a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Clients Two -->
+
+		<!-- CTA One -->
+		<section class="cta-one style-two">
+			<div class="cta-one_shadow" style="background-image:url(assets/images/background/cta-shadow.png)"></div>
+			<div class="auto-container">
+				<div class="inner-container">
+					<div class="cta-icon_one"
+						style="background-image:url(https://i.ibb.co/B3k11vB/BXC-151-x-133-px.png)"></div>
+					<div class="cta-icon_two" style="background-image:url(assets/images/icons/cta-icon-2.png)"></div>
+					<div class="cta-one_card">
+						<img src="assets/images/icons/CVD.png" alt="" />
+					</div>
+					<div class="row clearfix">
+						<!-- Column -->
+						<div class="cta-one_title-column col-lg-6 col-md-12 col-sm-12">
+							<div class="cta-one_title-outer">
+								<h2 class="cta-one_title">The Timeless Wisdom <span>of Ayurveda</span></h2>
+								<div class="cta-one_button">
+									<a href="/about" class="template-btn btn-style-three">
+										<span class="btn-wrap">
+											<span class="text-one">Explore Now</span>
+											<span class="text-two">Explore Now</span>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- Column -->
+						<div class="cta-one_image-column col-lg-6 col-md-12 col-sm-12">
+							<div class="cta-one_image-outer">
+								<div class="cta-one_cards">
+									<img src="assets/images/logo.png" height="250px" width="250px" alt="" />
+								</div>
+								<div class="image">
+									<img src="assets/images/resource/HEX.png" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End CTA One -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer style-three">
+			<div class="footer_pattern" style="background-image: url(assets/images/background/master-foot.png)">
+			</div>
+
+			<div class="auto-container">
+				<div class="inner-container">
+					<!-- Widgets Section -->
+					<div class="widgets-section">
+						<div class="row clearfix">
+
+							<!-- Big Column -->
+							<div class="big-column col-lg-7 col-md-12 col-sm-12">
+								<div class="footer-lists_outer">
+									<div class="row clearfix">
+										<!-- Column -->
+										<div class="column col-lg-5 col-md-4 col-sm-6">
+											<h5 class="footer-title">Services</h5>
+											<ul class="footer-pages_list">
+												<li><a href="#">Find a doctor</a></li>
+												<li><a href="#">Manage an Appoinment</a></li>
+												<li><a href="#">International Patients</a></li>
+												<li><a href="#">Online Pharmacy</a></li>
+												<li><a href="#">Download Report</a></li>
+												<li><a href="#">Ceylon Hospital Wellness</a></li>
+												<li><a href="#">Payments Portal</a></li>
+											</ul>
+										</div>
+										<!-- Column -->
+										<div class="column col-lg-3 col-md-4 col-sm-6">
+											<h5 class="footer-title">resources</h5>
+											<ul class="footer-pages_list">
+												<li><a href="#">Blog</a></li>
+												<li><a href="#">FAQs</a></li>
+												<li><a href="#">Help center</a></li>
+												<li><a href="#">DOC AI</a></li>
+												<li><a href="#">Explore Ayurveda</a></li>
+												<li><a href="#">Services</a></li>
+											</ul>
+										</div>
+										<!-- Column -->
+										<div class="column col-lg-4 col-md-4 col-sm-6">
+											<h5 class="footer-title">about us</h5>
+											<ul class="footer-pages_list">
+												<li><a href="#">Our History</a></li>
+												<li><a href="#">Our Values</a></li>
+												<li><a href="#">Management</a></li>
+												<li><a href="#">Consultants</a></li>
+												<li><a href="#">Carriers</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Big Column -->
+							<div class="big-column col-lg-5 col-md-12 col-sm-12">
+								<div class="footer-newsletter">
+									<h5 class="footer-title">Monthly Ayurvedic E-Magazine</h5>
+									<div class="footer-newsletter_text">Subscribe now to receive the latest
+										insights, tips, and news on Ayurvedic medicine directly to your inbox
+										each month</div>
+									<div class="newsletter-box">
+										<form method="post" action="#">
+											<div class="form-group">
+												<span class="icon fa-regular fa-envelope fa-fw"></span>
+												<input type="email" name="search-field" value=""
+													placeholder="Enter your mail" required>
+												<button type="submit" class="template-btn btn-style-one">
+													<span class="btn-wrap">
+														<span class="text-one">Subscribe</span>
+														<span class="text-two">Subscribe</span>
+													</span>
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="auto-container">
+					<div class="inner-container d-flex justify-content-between align-items-center flex-wrap">
+						<div class="apps-buttons d-flex align-items-center flex-wrap">
+							<a href="#"><img src="assets/images/icons/app-btn.png" alt="" /></a>
+							<a href="#"><img src="assets/images/icons/playstore.png" alt="" /></a>
+						</div>
+						<div class="footer-copyright">&copy; 2024 <a href="/">Alpha Management Group (Pvt)
+								Ltd</a>
+							&nbsp;All rights reserved.
+						</div>
+						<!-- Social Box -->
+						<div class="footer-social_box">
+							<a href="https://facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+							<a href="https://twitter.com/"><i class="fa-brands fa-tiktok"></i></a>
+							<a href="https://youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+							<a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="containeryyyy">
+					 <h6 id="designerText" class="neon">&nbsp;&nbsp;Designed & Developed by Kisal Wijemanna</h6>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<!-- End PageWrapper -->
+
+	<div class="progress-wrap">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+		</svg>
+	</div>
+
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/appear.js"></script>
+	<script src="assets/js/parallax.min.js"></script>
+	<script src="assets/js/tilt.jquery.min.js"></script>
+	<script src="assets/js/jquery.paroller.min.js"></script>
+	<script src="assets/js/wow.js"></script>
+	<script src="assets/js/swiper.min.js"></script>
+	<script src="assets/js/backtotop.js"></script>
+	<script src="assets/js/odometer.js"></script>
+	<script src="assets/js/parallax-scroll.js"></script>
+
+	<script src="assets/js/gsap.min.js"></script>
+	<script src="assets/js/SplitText.min.js"></script>
+	<script src="assets/js/ScrollTrigger.min.js"></script>
+	<script src="assets/js/ScrollToPlugin.min.js"></script>
+	<script src="assets/js/ScrollSmoother.min.js"></script>
+
+	<script src="assets/js/touchspin.js"></script>
+	<script src="assets/js/jquery.marquee.min.js"></script>
+	<script src="assets/js/magnific-popup.min.js"></script>
+	<script src="assets/js/nav-tool.js"></script>
+	<script src="assets/js/jquery-ui.js"></script>
+	<script src="assets/js/element-in-view.js"></script>
+	<script src="assets/js/script.js"></script>
+
+	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+
+</body>
+
+</html>

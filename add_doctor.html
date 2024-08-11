@@ -1,0 +1,168 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h2 style="text-align: center;">Add New Doctor</h2>
+<br>
+<form action="{{ url_for('add_doctor') }}" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+    </div>
+    <div>
+        <label for="university">University/Institute:</label>
+        <input type="text" id="university" name="university" required>
+    </div>
+    <div>
+        <label for="specialization">Specialization:</label>
+        <input type="text" id="specialization" name="specialization" required>
+    </div>
+    <div>
+        <label for="languages">Languages:</label>
+        <input type="text" id="languages" name="languages" required>
+    </div>
+    <div>
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" name="experience" required>
+    </div>
+    <div>
+        <label for="image_url">Doctor Image URL:</label>
+        <input type="text" id="image_url" name="image_url" required>
+    </div>
+    <div>
+        <label for="availability">Availability (Day and Time Ranges):</label>
+        <div id="availability">
+            <div class="availability-entry">
+                <select name="days[]" class="custom-select" required>
+                    <option value="" disabled selected>Select Day</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+                <input type="text" name="times[]" placeholder="Time Range (e.g., 8:00 AM - 5:00 PM)" class="custom-input" required>
+            </div>
+            <!-- Additional entries will be added here -->
+        </div>
+        <button type="button" onclick="addAvailabilityEntry()" class="add-entry-btn" style="max-width: 200px;"><i class="fa fa-plus"></i> &nbsp; Add Another Entry</button>
+    </div>
+    <br>
+    <div>
+        <button type="submit" class="submit-btn"><i class="fa fa-stethoscope"></i>&nbsp; Add Doctor </button>
+    </div>
+</form>
+
+<script>
+    function addAvailabilityEntry() {
+        const availabilityDiv = document.getElementById('availability');
+        const newEntry = document.createElement('div');
+        newEntry.className = 'availability-entry';
+        newEntry.innerHTML = `
+            <select name="days[]" class="custom-select" required>
+                <option value="" disabled selected>Select Day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+            <input type="text" name="times[]" placeholder="Time Range (e.g., 8:00 AM - 5:00 PM)" class="custom-input" required>
+        `;
+        availabilityDiv.appendChild(newEntry);
+    }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #dbdbdb;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        outline: none;
+    }
+
+    .custom-select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        appearance: none;
+        margin-bottom: 10px;
+    }
+
+    .custom-select:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        outline: none;
+    }
+
+    .custom-input {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 10px;
+    }
+
+    .custom-input:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        outline: none;
+    }
+
+    .availability-entry {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .add-entry-btn,
+    .submit-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .add-entry-btn:hover,
+    .submit-btn:hover {
+        background-color: #45a049;
+        transform: scale(1.02);
+    }
+</style>
+
+{% endblock %}

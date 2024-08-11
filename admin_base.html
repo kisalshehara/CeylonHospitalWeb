@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="assets/styles.css">
+<style>
+    /* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212; /* Dark background for the body */
+    color: #e0e0e0; /* Light text color for contrast */
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+    color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffdd57;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Main Content */
+main {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1); /* Glass effect */
+    backdrop-filter: blur(10px); /* Blurring the background */
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: rgba(255, 255, 255, 0.2); /* Glassy input fields */
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input[type="text"]:focus,
+form textarea:focus {
+    border-color: #ffdd57;
+    box-shadow: 0 0 5px rgba(255, 221, 87, 0.3);
+    outline: none;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #017e1c, #015014);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background: linear-gradient(135deg, #b62804, #4b0101);
+    transform: scale(1.02);
+}
+
+form button:active {
+    background: linear-gradient(135deg, #017e1c, #015014);
+    transform: scale(0.98);
+}
+
+/* Footer */
+footer {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Doctors List */
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+}
+
+li {
+    flex: 1 1 calc(25% - 20px); /* Adjusts to 4 items per row with gap */
+    background: rgba(255, 255, 255, 0.1); /* Glass effect */
+    backdrop-filter: blur(10px); /* Blurring the background */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+li:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #e0e0e0;
+    padding: 20px;
+}
+
+li img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #007bff;
+}
+
+li h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #ffdd57;
+}
+
+li p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('add_doctor') }}">Add Doctor</a></li>
+                <li><a href="{{ url_for('list_doctors') }}">List Doctors</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+      
+        {% endblock %}
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>

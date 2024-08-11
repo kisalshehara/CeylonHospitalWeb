@@ -1,0 +1,16 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h2>Doctors List</h2>
+<ul>
+    {% for doctor in doctors %}
+        <li>
+            <a href="{{ url_for('doctor_profile', doctor_id=doctor.id) }}">
+                <img src="{{ url_for('static', filename=doctor.image) }}" alt="{{ doctor.name }}" width="100">
+                <h3>{{ doctor.name }}</h3>
+                <p>{{ doctor.specialization }}</p>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
